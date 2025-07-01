@@ -40,7 +40,7 @@ export default function RsvpForm() {
 
     return (
         <div className="max-w-md mx-auto my-10">
-            <h1 className="text-2xk font-bold mb-4">{strings.title}</h1>
+            <h1 className="text-2xl font-bold mb-4">{strings.title}</h1>
             <p className="mb-6">{strings.description}</p>
 
             <div className="mb-6">
