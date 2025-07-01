@@ -1,9 +1,9 @@
 export const strings = {
     title: "Sample RSVP",
     description: "We're excited to celebrate our special sample day with you! Please let us know if you can make it.",
-    eventDate: "2024-06-15", // YYYY-MM-DD format
+    eventDate: "2025-06-15", // YYYY-MM-DD format
     eventDateLabel: "Event Date",
-    eventLocation: "Centra Park, new York, NY 10022",
+    eventLocation: "Central Park, new York, NY 10022",
     eventLocationLabel: "Event Location",
     nameLabel: "Full Name",
     emailLabel: "Email Address",
