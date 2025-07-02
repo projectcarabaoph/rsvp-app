@@ -1,7 +1,7 @@
 'use server'
 
 import { serverClient } from "@/app/_utils/supabase/server-client"
-import { revalidatePath } from "next/cache"
+import { redirect } from "next/navigation"
 
 export const signIn = async (formData: FormData) => {
     const supabase = await serverClient()
@@ -16,5 +16,5 @@ export const signIn = async (formData: FormData) => {
 
     if (error) throw new Error(error.message)
 
-    revalidatePath('/')
+    redirect("/admin");
 }
