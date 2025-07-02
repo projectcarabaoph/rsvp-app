@@ -8,7 +8,7 @@ export const submitRsvp = async (formData: FormData) => {
     const name = formData.get('name')
     const email = formData.get('email')
     const accompany = formData.get('accompany')
-    const attendace = formData.get('attendace')
+    const attendance = formData.get('attendance')
 
     const { data, error } = await supabase
         .from('rsvps')
@@ -16,7 +16,7 @@ export const submitRsvp = async (formData: FormData) => {
             name,
             email,
             accompany,
-            attendace
+            attendance
         })
 
     if (error) throw new Error(error.message)

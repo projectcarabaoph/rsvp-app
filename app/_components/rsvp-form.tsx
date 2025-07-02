@@ -11,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { toast } from 'sonner'
 
 import { strings } from "../_utils/string"
+import { submitRsvp } from "../_actions/actions"
 
 export default function RsvpForm() {
     const [name, setName] = useState<string>("")
@@ -21,8 +22,39 @@ export default function RsvpForm() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
 
-    const handleOnSubmit = () => {
-        console.log('Submit')
+    const handleOnSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        setIsLoading(true)
+
+        if (!name) {
+            setErrors({ name: "Name is required." });
+            return;
+        }
+
+        if (!email) {
+            setErrors({ name: "Email is required." });
+            return;
+        }
+
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('email', email)
+        formData.append('accompany', accompany || "0")
+        formData.append('attendance', attendance)
+
+        try {
+            await submitRsvp(formData)
+            toast.success(strings.thankYouMessage)
+            setName('')
+            setEmail('')
+            setAccompany(null)
+            setAttendance('yes')
+        } catch (error) {
+            if (error instanceof Error) toast.error(error.message)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
 
