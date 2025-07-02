@@ -39,13 +39,13 @@ export async function middlewareClient(request: NextRequest) {
     const { pathname } = request.nextUrl
     const requestUrl = request.nextUrl.clone()
 
-    if (user && pathname.startsWith('/auth')) {
-        requestUrl.pathname = '/home'
+    if (user && pathname.startsWith('/sign-in')) {
+        requestUrl.pathname = '/admin'
         return NextResponse.redirect(requestUrl)
     }
 
-    if (!user && pathname.startsWith('/home')) {
-        requestUrl.pathname = '/auth/sign-in'
+    if (!user && pathname.startsWith('/admin')) {
+        requestUrl.pathname = '/sign-in'
         return NextResponse.redirect(requestUrl)
     }
 
