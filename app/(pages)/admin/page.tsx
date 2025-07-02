@@ -1,7 +1,12 @@
-import { serverClient } from "@/app/_utils/supabase/server-client"
-import { Button } from "@/components/ui/button"
 import { House } from "lucide-react"
 import Link from "next/link"
+
+import RsvpTable from "@/app/_components/rsvp-table"
+import { Button } from "@/components/ui/button"
+
+import { serverClient } from "@/app/_utils/supabase/server-client"
+import type { IRsvp } from "@/app/_types"
+
 
 const AdminPage = async () => {
 
@@ -9,7 +14,6 @@ const AdminPage = async () => {
     const { data, error } = await supabase
         .from('rsvps')
         .select('*')
-
 
     return (
         <div className=" container mx-auto mt-8 p-4">
@@ -33,7 +37,7 @@ const AdminPage = async () => {
                 )
                 :
                 (
-                    <div>details</div>
+                    <RsvpTable data={data as IRsvp[]} />
                 )
             }
         </div>
