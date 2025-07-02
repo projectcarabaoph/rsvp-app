@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 
 import { serverClient } from "@/app/_utils/supabase/server-client"
 import type { IRsvp } from "@/app/_types"
+import { signOut } from "@/app/_actions/auth/actions"
 
 
 const AdminPage = async () => {
@@ -25,7 +26,7 @@ const AdminPage = async () => {
                             <House />
                         </Button>
                     </Link>
-                    <Button variant={'outline'}>
+                    <Button onClick={signOut} variant={'outline'}>
                         Sign Out
                     </Button>
                 </div>
